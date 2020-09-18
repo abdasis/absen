@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\AbsensiExport;
 use App\Models\Absensi;
 use App\Models\Device;
 use App\Models\Karyawan;
@@ -8,6 +10,7 @@ use App\Models\Sift;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AbsensiController extends Controller
 {
@@ -107,5 +110,10 @@ class AbsensiController extends Controller
     public function destroy(Absensi $absensi)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new AbsensiExport, 'users.xlsx');
     }
 }

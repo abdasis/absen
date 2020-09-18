@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('setting-device{id}', 'DeviceController@update')->name('update-device');
     Route::resource('sift', 'SiftController');
 });
+Route::get('absensi/export/', 'AbsensiController@export');
 
 Auth::routes();
 
