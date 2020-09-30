@@ -114,6 +114,6 @@ class AbsensiController extends Controller
 
     public function export()
     {
-        return Excel::download(new AbsensiExport, 'users.xlsx');
+        return Excel::download(new AbsensiExport, date('d-m-Y') . '-data-absen.xlsx');
     }
 }

@@ -27,9 +27,7 @@ class AbsensiExport implements FromView, WithHeadings, ShouldAutoSize
         $absensi = Absensi::join('karyawans', 'karyawans.user_id', 'absensis.user_id')
         ->join('karyawan_sift', 'karyawan_sift.karyawan_id', 'karyawans.id')
         ->join('sifts', 'karyawan_sift.sift_id', 'sifts.id')
-        ->distinct()
         ->get();
-        dd($absensi);
         return view('exports.absensi', [
             'absens' => $absensi,
         ]);
